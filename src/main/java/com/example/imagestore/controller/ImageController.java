@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @CrossOrigin // Allow all domain origins.
 @RestController
@@ -24,10 +25,17 @@ public class ImageController {
         return ResponseEntity.ok().body(images);
     }
 
+    @GetMapping("/byuser/{user}")
+    public ResponseEntity<List<Image>> findByUser(@PathVariable String user) {
+        List<Image> userImages = images.stream().filter(element -> element.getUser().equals(user)).collect(Collectors.toList());
+        System.out.println("Found images:" + userImages.size());
+        return ResponseEntity.ok().body(userImages);
+    }
 
     @PostMapping()
     public ResponseEntity<Image> createImage(@RequestBody Image image) {
         image.setId(counter++);
+        image.setCreated(new Date());
         images.add(image);
         System.out.println("Added image: ${}");
         return ResponseEntity.ok().body(image);
