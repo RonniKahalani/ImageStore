@@ -21,14 +21,12 @@ public class ImageController {
 
     @GetMapping()
     public ResponseEntity<List<Image>> findAll() {
-        System.out.println("Found images:" + images.size());
         return ResponseEntity.ok().body(images);
     }
 
     @GetMapping("/byuser/{user}")
     public ResponseEntity<List<Image>> findByUser(@PathVariable String user) {
         List<Image> userImages = images.stream().filter(element -> element.getUser().equals(user)).collect(Collectors.toList());
-        System.out.println("Found images:" + userImages.size());
         return ResponseEntity.ok().body(userImages);
     }
 
@@ -37,7 +35,6 @@ public class ImageController {
         image.setId(counter++);
         image.setCreated(new Date());
         images.add(image);
-        System.out.println("Added image: " + image);
         return ResponseEntity.ok().body(image);
     }
 
@@ -45,8 +42,6 @@ public class ImageController {
     public ResponseEntity<Image> deleteImage(@PathVariable("id") Integer id) {
         Image deleteImage = images.stream().filter( element -> element.getId().equals(id)).findFirst().get();
         images.remove(deleteImage);
-        System.out.println("removed image: " + deleteImage);
         return ResponseEntity.ok().body(deleteImage);
     }
-
 }
