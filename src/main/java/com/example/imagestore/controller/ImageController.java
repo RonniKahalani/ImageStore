@@ -37,7 +37,7 @@ public class ImageController {
         image.setId(counter++);
         image.setCreated(new Date());
         images.add(image);
-        System.out.println("Added image: ${}");
+        System.out.println("Added image: " + image);
         return ResponseEntity.ok().body(image);
     }
 
@@ -45,7 +45,7 @@ public class ImageController {
     public ResponseEntity<Image> deleteImage(@PathVariable("id") Integer id) {
         Image deleteImage = images.stream().filter( element -> element.getId().equals(id)).findFirst().get();
         images.remove(deleteImage);
-        System.out.println("removed image: ${}");
+        System.out.println("removed image: " + deleteImage);
         return ResponseEntity.ok().body(deleteImage);
     }
 
