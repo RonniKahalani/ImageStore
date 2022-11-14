@@ -31,7 +31,7 @@ public class ImageController {
     }
 
     @PostMapping()
-    public ResponseEntity<Image> createImage(@RequestBody Image image) {
+    public ResponseEntity<Image> create(@RequestBody Image image) {
         image.setId(counter++);
         image.setCreated(new Date());
         images.add(image);
@@ -39,7 +39,7 @@ public class ImageController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Image> deleteImage(@PathVariable("id") Integer id) {
+    public ResponseEntity<Image> delete(@PathVariable("id") Integer id) {
         Image deleteImage = images.stream().filter( element -> element.getId().equals(id)).findFirst().get();
         images.remove(deleteImage);
         return ResponseEntity.ok().body(deleteImage);
