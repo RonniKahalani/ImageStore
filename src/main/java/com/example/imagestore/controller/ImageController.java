@@ -1,6 +1,6 @@
 package com.example.imagestore.controller;
 
-import com.example.imagestore.Image;
+import com.example.imagestore.model.Image;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

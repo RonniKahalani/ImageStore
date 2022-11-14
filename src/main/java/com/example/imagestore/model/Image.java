@@ -1,4 +1,4 @@
-package com.example.imagestore;
+package com.example.imagestore.model;
 
 import lombok.Data;
 import lombok.Getter;
