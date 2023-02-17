@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@CrossOrigin // Allow all domain origins.
+@CrossOrigin // Allow all domain origins..
 @RestController
 @RequestMapping("/api/v1/image")
 public class ImageController {
